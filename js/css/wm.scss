@@ -1,0 +1,234 @@
+body {
+  margin: 0;
+  user-select: none;
+  cursor: default;
+  font: 12px/18px 'Open Sans', sans-serif;
+  position: fixed;
+  top: 0; bottom: 0;
+  width: 100%;
+
+  & > header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: #2c3e50;
+    color: #fff;
+    padding: 0;
+
+    span {
+      padding: 0 20px;
+      display: inline-block;
+    }
+
+    .title {
+      background: #e74c3c;
+    }
+
+    .clickable:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+  }
+
+  & > .content {
+    position: absolute;
+    top: 30px; bottom: 0;
+    width: 100%;
+    background: #34495e;
+    overflow: hidden;
+  }
+
+}
+
+.window-manager {
+  position: relative;
+}
+
+.windows {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+}
+
+.window {
+  position: absolute;
+  background: #fff;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  background: #2980b9;
+  //overflow: hidden;
+  transition: box-shadow 0.15s ease;
+  border-radius: 5px;
+
+  &.active {
+    background: #3498db;
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  $header_height: 20px;
+
+  @mixin window-title-button {
+    float: right;
+    font-size: 16px;
+    //font-weight: bold;
+    line-height: $header_height;
+    //color: #000;
+    opacity: 0.4;
+    height: $header_height;
+    width: $header_height;
+    transition: background 0.15s ease;
+    cursor: default;
+    color: #fff;
+    text-align: center;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  @mixin window-title-glyphicon-button {
+    @include window-title-button;
+    font-size: 12px;
+    top: 0;
+  }
+
+  header {
+    position: absolute;
+    top: 0;
+    height: $header_height;
+    left: 0;
+    right: 0;
+    line-height: $header_height;
+    cursor: move;
+
+    .title {
+      margin-left: $header_height / 4;
+      margin-right: $header_height * 2;
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .menu-button {
+      @include window-title-glyphicon-button;
+      float: left;
+    }
+
+    .close-button {
+      @include window-title-button;
+      font-weight: bold;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    .properties-button {
+      @include window-title-glyphicon-button;
+    }
+
+    .header-dropdown {
+      //position: inherit;
+      display: inherit;
+      vertical-align:inherit;
+    }
+
+    .popup-menu {
+      top: $header_height;
+      $menu_icon_width: 20px;
+      .menu-item-icon {
+        width: $menu_icon_width;
+        text-align: center;
+      }
+
+      .menu-item-close {
+        text-align: center;
+        width: $menu_icon_width;
+        font-size: 16px;
+        display: inline-block;
+        font-weight: bold;
+        text-shadow: 0 1px 0 #333333;
+      }
+
+      > li > a {
+        padding: 3px 10px;
+      }
+    }
+
+  }
+
+  .content {
+    $padding: 3px;
+    background: #fff;
+    position: absolute;
+    top: $header_height;
+    bottom: $padding;
+    left: $padding;
+    right: $padding;
+  }
+
+  .resize {
+    position: absolute;
+    bottom: 0;
+
+    &.se-resize {
+      right: 0;
+      cursor: se-resize;
+      width: 10px;
+      height: 10px;
+    }
+
+    &.sw-resize {
+      left: 0;
+      cursor: sw-resize;
+      width: 10px;
+      height: 10px;
+    }
+
+    &.s-resize {
+      left: 0;
+      right: 0;
+      cursor: ns-resize;
+      height: 10px;
+    }
+
+    &.e-resize {
+      right: 0;
+      top: $header_height;
+      cursor: ew-resize;
+      width: 10px;
+    }
+
+    &.w-resize {
+      left: 0;
+      top: $header_height;
+      cursor: ew-resize;
+      width: 10px;
+    }
+
+  }
+}
+
+.settings {
+  padding: 20px;
+}
+
+$fade: opacity 1s ease-in;
+
+.transition-enter {
+  opacity: 0;
+  transition: $fade;
+}
+
+.transition-enter.transition-enter-active {
+  opacity: 1;
+}
+
+.transition-leave {
+  opacity: 1;
+  transition: $fade;
+}
+
+.transition-leave.transition-leave-active {
+  opacity: 0;
+}
+

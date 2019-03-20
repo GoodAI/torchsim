@@ -1,0 +1,264 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+body, html {
+  height: 100vh;
+}
+
+#app {
+  height: 100%;
+  position: relative;
+}
+
+$header_height: 36px;
+
+#header {
+  background-color: #a8d9e9;
+  //background-color: #E9E3E6;
+  height: $header_height;
+
+  .text {
+    font-size: 25px;
+    font-weight: 600;
+  }
+}
+
+.desktop {
+  //$desktop_background: #bbb;
+  $desktop_background: lighten(#586994, 50);
+  $desktop_line: lighten($desktop_background, 3);
+
+  //background-color: #C2D2FF;
+  position: absolute;
+  top: $header_height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  overflow: auto;
+
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, $desktop_line 1px, transparent 1px), linear-gradient(to bottom, $desktop_line 1px, $desktop_background 1px);
+}
+
+.window {
+  position: absolute;
+  border: 1px solid #e0e0e0;
+
+  div.content {
+    overflow: auto;
+  }
+}
+
+// Observer MemoryBlock
+
+.memory-block-image {
+  image-rendering: pixelated;
+  display: inherit;
+}
+
+.memory-block-tooltip {
+  > .tooltip-inner {
+    max-width: 800px;
+  }
+
+  .memory-block-tooltip-header {
+    color: #aaa;
+    margin-bottom: 3px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+// Observer Properties
+
+.table-properties {
+
+  $shade1: #fff;
+  $shade2: #eee;
+  $shade3: #ddd;
+  $shade4: #ccc;
+  $shade5: #bbb;
+
+  $header-background-color: $shade3;
+  $header-background-color-hover: $shade4;
+  // $header-border-color: #bbb;
+  $header-border-color: $shade4;
+  $header-border-color-hover: $shade5;
+
+  $row-background-color-name: $shade2;
+  $row-background-color-value: $shade1;
+  $row-background-color-hover: $shade3;
+  $row-border-color: $shade3;
+  $row-border-color-hover: $shade4;
+
+  margin: 0;
+
+  td {
+    font-size: 0.9em;
+  }
+
+  border-bottom: 1px solid $row-border-color;
+
+  td.table-properties-header {
+    padding: 2px 10px 2px 2px;
+    text-align: left;
+    background-color: $header-background-color;
+    font-weight: bold;
+    color: #666;
+    border: 0;
+    border-top: 1px solid $header-border-color;
+    border-bottom: 1px solid $header-border-color;
+
+    .icon {
+      padding-right: 6px;
+      font-weight: normal;
+      font-size: 0.7em;
+    }
+  }
+
+  tr:hover td.table-properties-header {
+    background-color: $header-background-color-hover;
+    border-bottom: solid 1px $header-border-color-hover;
+    border-top: solid 1px $header-border-color-hover;
+  }
+
+  td.table-properties-name {
+    padding: 3px 10px 1px 2px;
+    text-align: left;
+    background-color: $row-background-color-name;
+
+    &.nested {
+      padding-left: 20px;
+    }
+  }
+
+  td.table-properties-value {
+    background-color: $row-background-color-value;
+    border-left: solid 1px $row-border-color;
+    padding: 1px 0px 1px 5px;
+
+    input[type=checkbox] {
+      margin-left: 0px;
+      $scale: 1.3;
+      -ms-transform: scale($scale); /* IE */
+      -moz-transform: scale($scale); /* FF */
+      -webkit-transform: scale($scale); /* Safari and Chrome */
+      -o-transform: scale($scale); /* Opera */
+    }
+
+    input.input-sm {
+      height: 20px;
+      padding: 0 0 0 5px;
+    }
+
+    label.checkbox {
+      margin-top: 0px;
+    }
+
+    label.checkbox-inline {
+      padding-left: 1px;
+    }
+
+    > input {
+      width: 100%;
+    }
+
+    .optional-container {
+      width: 100%;
+      display: flex;
+      padding-right: 10px;
+
+      .text-input {
+        flex-grow: 1;
+        //flex-shrink: 1;
+        flex-basis: 20px;
+        width: 20px;
+      }
+
+      .optional-switch {
+        margin-left: 10px;
+        flex-grow: 0;
+      }
+    }
+  }
+
+  tr:hover td.table-properties-name, tr:hover td.table-properties-value {
+    background-color: $row-background-color-hover;
+    border-bottom: solid 1px $row-border-color-hover;
+    border-top: solid 1px $row-border-color-hover;
+  }
+
+  tr:hover td.table-properties-value {
+    border-left: solid 1px $row-border-color-hover;
+  }
+
+  .source-type-icon {
+    //padding-right: 6px;
+    font-weight: normal;
+    font-size: 0.8em;
+    color: #888;
+    left: -10px;
+  }
+  //td input {
+  //  width: 100%;
+  //}
+
+}
+
+.tooltip {
+  .table-properties-hint {
+    text-align: left;
+
+    .name {
+      font-size: inherit;
+      color: #888;
+    }
+
+    div.source-type {
+      margin-top: 10px;
+      color: #ccc;
+      //border-top: 1px solid white;
+    }
+  }
+}
+
+.content-properties {
+  background-color: #ffffff;
+}
+
+// Hierarchical observer
+.hierarchical-observer {
+
+  > table {
+    border-collapse: collapse;
+
+    tr, td {
+      border: 2px solid #fff;
+    }
+  }
+
+  .group {
+    padding: 1px;
+
+    &.horizontal {
+      display: inline;
+    }
+
+    &.vertical {
+      display: block;
+    }
+  }
+
+  .cluster {
+    //padding: 2px;
+    white-space: nowrap;
+    //border: 1px solid #000;
+  }
+}
+
+.cluster-observer-canvas {
+  //width: 400px;
+  //height: 400px;
+  display: inherit;
+}
