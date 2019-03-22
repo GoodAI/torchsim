@@ -4,7 +4,7 @@ TorchSim is a simulation platform developed for the purpose of AGI research, but
 
 The simulation can be optionally controlled and observed via an included web-based UI. Internal and output tensors of nodes can be observed with basic tensor/matrix observers, and custom observers are written for other use-cases.
 
-A part of this repository is an implementation of ToyArchitecture - a simple interpretable AGI model. A paper will be published and linked here later.
+A part of this repository is an implementation of ToyArchitecture - a simple interpretable AGI model described in this paper: [ToyArchitecture: Unsupervised Learning of Interpretable Models of the World](https://arxiv.org/abs/1903.08772).
 
 The original code was developed internally at GoodAI by (in alphabetical order):
 
